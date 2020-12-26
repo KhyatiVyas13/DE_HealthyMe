@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#080808</color>
+    <color name="colorPrimaryDark">#080808</color>
+    <color name="header">#00B7EB</color>
+    <color name="secondary">#3F00FF</color>
+    <color name="Actions">#E52B50</color>
+    <color name="orange">#F08A5D</color>
+    <color name="purple">#A32F80</color>
+    <color name="blueTemp">#6927FF</color>
+</resources>
