@@ -20,7 +20,7 @@
             android:text="@string/healthyme"
             android:textColor="@color/header"
             android:textSize="25sp"
-            android:layout_marginStart="70sp"
+            android:layout_marginStart="40sp"
             android:layout_marginTop="15sp"/>
 
     </LinearLayout>

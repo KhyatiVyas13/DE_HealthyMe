@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class StaggeredHomeAdapter extends RecyclerView.Adapter<StaggeredHomeAdapter.ViewHolder> {
 
+    //for names & images
     private ArrayList<String> hName = new ArrayList<>();
     private ArrayList<Integer> hImage = new ArrayList<>();
     private Context context;

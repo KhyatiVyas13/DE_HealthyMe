@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         textView = findViewById(R.id.title);
         vector = findViewById(R.id.vectorImg);
 
-        //Customised font
+        //for Customised font
         Typeface kohoFont = Typeface.createFromAsset(getAssets(),"fonts/KoHo-Medium.ttf");
         textView.setTypeface(kohoFont);
 

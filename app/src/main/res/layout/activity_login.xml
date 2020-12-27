@@ -7,6 +7,11 @@
     tools:context=".LoginActivity"
     android:background="@drawable/ic_login_bg">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
     <TextView
         android:id="@+id/head"
         android:layout_width="wrap_content"
@@ -14,12 +19,9 @@
         android:text="@string/healthyme"
         android:textColor="@color/header"
         android:textSize="25sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.092"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.035" />
+        android:layout_marginStart="30sp"
+        android:layout_marginTop="15sp" />
+    </LinearLayout>
 
     <TextView
         android:id="@+id/msg"

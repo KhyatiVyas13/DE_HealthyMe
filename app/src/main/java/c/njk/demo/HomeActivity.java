@@ -134,6 +134,7 @@ public class HomeActivity extends AppCompatActivity {
 
     }
 
+    //for vectors
     private void initImages(){
 
         hImage.add(R.drawable.health);
