@@ -1,22 +1,30 @@
 package c.njk.demo;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
 
+import android.graphics.Typeface;
 import android.hardware.SensorManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.mikhaellopez.circularprogressbar.CircularProgressBar;
+import com.shrikanthravi.customnavigationdrawer2.data.MenuItem;
+import com.shrikanthravi.customnavigationdrawer2.widget.SNavigationDrawer;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -36,6 +44,11 @@ public class HomeActivity extends AppCompatActivity {
     int i = 0;
     int j = 1;
 
+    private SNavigationDrawer sNavigationDrawer;
+    Class fragmentClass;
+    public static Fragment fragment;
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,75 +67,147 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void run() {
 
-                if (i <= 100){
-                    stepTaken.setText("" + j);
+                if (i <= 6000){
+                    stepTaken.setText("" + i);
                     mainProgressBar.setProgress(i);
                     i++;
-                    handler.postDelayed(this, 300);
+                    handler.postDelayed(this, 1200);
                 }else {
                     handler.removeCallbacks(this);
                 }
             }
-        },300);
+        },1200);
+//
+//        //Calories Progressbar
+//        caloriesProgressBar = findViewById(R.id.calories_progress_bar);
+//        caloriesBurnt = findViewById(R.id.caloriesBurnt);
+//
+//        handler.postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//
+//                if (i <= 110){
+//                    caloriesBurnt.setText("" + j);
+//                    caloriesProgressBar.setProgress(i);
+//                    i++;
+//                    handler.postDelayed(this, 300);
+//                }else {
+//                    handler.removeCallbacks(this);
+//                }
+//            }
+//        },300);
+//
+//        //Distance progressbar
+//
+//        distanceProgressBar = findViewById(R.id.distance_progress_bar);
+//        distanceWalked = findViewById(R.id.distanceWalked);
+//
+//        handler.postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                if (i <= 108){
+//                    distanceProgressBar.setProgress(i);
+//                    distanceWalked.setText("" + 1);
+//                    i++;
+//                    handler.postDelayed(this,300);
+//                }else{
+//                    handler.removeCallbacks(this);
+//                }
+//            }
+//        },300);
 
-        //Calories Progressbar
-        caloriesProgressBar = findViewById(R.id.calories_progress_bar);
-        caloriesBurnt = findViewById(R.id.caloriesBurnt);
+//        //Active time progressbar
+//        activeTimeProgressBar = findViewById(R.id.active_time_progress_bar);
+//        activeTimeCount = findViewById(R.id.activeTimeCount);
+//        activeTime = findViewById(R.id.activeTime);
 
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
+//        handler.postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                if (i <= 105){
+//                    activeTimeCount.setText("" + 1);
+//                    activeTimeProgressBar.setProgress(i);
+//                    i++;
+//                    handler.postDelayed(this,300);
+//                }else{
+//                    handler.removeCallbacks(this);
+//                }
+//            }
+//        },300);
 
-                if (i <= 110){
-                    caloriesBurnt.setText("" + j);
-                    caloriesProgressBar.setProgress(i);
-                    i++;
-                    handler.postDelayed(this, 300);
-                }else {
-                    handler.removeCallbacks(this);
-                }
-            }
-        },300);
-
-        //Distance progressbar
-
-        distanceProgressBar = findViewById(R.id.distance_progress_bar);
-        distanceWalked = findViewById(R.id.distanceWalked);
-
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                if (i <= 108){
-                    distanceProgressBar.setProgress(i);
-                    distanceWalked.setText("" + 1);
-                    i++;
-                    handler.postDelayed(this,300);
-                }else{
-                    handler.removeCallbacks(this);
-                }
-            }
-        },300);
-
-        //Active time progressbar
-        activeTimeProgressBar = findViewById(R.id.active_time_progress_bar);
-        activeTimeCount = findViewById(R.id.activeTimeCount);
-        activeTime = findViewById(R.id.activeTime);
-
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                if (i <= 105){
-                    activeTimeCount.setText("" + 1);
-                    activeTimeProgressBar.setProgress(i);
-                    i++;
-                    handler.postDelayed(this,300);
-                }else{
-                    handler.removeCallbacks(this);
-                }
-            }
-        },300);
-
+        //Initializing vectors in recycler view
         initImages();
+
+        //navigation drawer
+        sNavigationDrawer = findViewById(R.id.navDrawer);
+        sNavigationDrawer.setAppbarTitleTV("HealthyMe");
+        Typeface kohoFont = Typeface.createFromAsset(getAssets(),"fonts/KoHo-Medium.ttf");
+        sNavigationDrawer.setAppbarTitleTypeface(kohoFont);
+
+        //Adding menu items
+        List<MenuItem> menuItems = new ArrayList<>();
+        menuItems.add(new MenuItem("Home",R.mipmap.ic_launcher));
+        menuItems.add(new MenuItem("Profile",R.mipmap.ic_launcher));
+        menuItems.add(new MenuItem("Saved Reports",R.mipmap.ic_launcher));
+        menuItems.add(new MenuItem("FAQs",R.mipmap.ic_launcher));
+        menuItems.add(new MenuItem("About us",R.mipmap.ic_launcher));
+        menuItems.add(new MenuItem("Logout",R.mipmap.ic_launcher));
+
+        sNavigationDrawer.setMenuItemList(menuItems);
+        fragmentClass = ProfileFragment.class;
+        try {
+            fragment = (Fragment)fragmentClass.newInstance();
+        }catch (IllegalAccessException e){
+            e.printStackTrace();
+        }catch (InstantiationException e){
+            e.printStackTrace();
+        }
+
+        if(fragment != null){
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            fragmentManager.beginTransaction().setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out).replace(R.id.mainLayout,fragment).commit();
+
+        }
+
+
+       sNavigationDrawer.setDrawerListener(new SNavigationDrawer.DrawerListener() {
+           @Override
+           public void onDrawerOpening() {
+
+           }
+
+           @Override
+           public void onDrawerClosing() {
+               try {
+                   fragment = (Fragment)fragmentClass.newInstance();
+               }catch (IllegalAccessException e){
+                   e.printStackTrace();
+               }catch (InstantiationException e){
+                   e.printStackTrace();
+               }
+
+               if(fragment != null){
+                   FragmentManager fragmentManager = getSupportFragmentManager();
+                   fragmentManager.beginTransaction().setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out).replace(R.id.mainLayout,fragment).commit();
+
+               }
+           }
+
+           @Override
+           public void onDrawerOpened() {
+
+           }
+
+           @Override
+           public void onDrawerClosed() {
+
+           }
+
+           @Override
+           public void onDrawerStateChanged(int newState) {
+
+           }
+       });
 
 //        //Recycler view
 //        recyclerView = findViewById(R.id.recyclerView);
@@ -138,7 +223,7 @@ public class HomeActivity extends AppCompatActivity {
     private void initImages(){
 
         hImage.add(R.drawable.health);
-        hName.add("About you Health");
+        hName.add("About your Health");
 
         hImage.add(R.drawable.heart_rate);
         hName.add("Heart rate");

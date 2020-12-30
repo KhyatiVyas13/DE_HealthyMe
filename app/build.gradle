@@ -37,4 +37,7 @@ dependencies {
     //Glide
     implementation 'com.github.bumptech.glide:glide:4.11.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
+
+    //custom navigation drawer
+    implementation 'com.github.shrikanth7698:Custom-Navigation-Drawer:v0.0.1'
 }
