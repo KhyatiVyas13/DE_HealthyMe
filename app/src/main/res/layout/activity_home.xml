@@ -15,56 +15,59 @@
         app:appbarColor="@color/colorPrimary"
         app:HamMenuIconSize="30sp"
         app:appbarTitleTextColor="@color/header"
-        app:appbarTitleTextSize="13sp">
+        app:appbarTitleTextSize="13sp"
+        app:navigationDrawerBackgroundColor="#151515"
+        app:secondaryMenuItemTextColor="#D4D4D4">
         <FrameLayout
             android:id="@+id/mainLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="#080808">
 
-            <ProgressBar
-                android:id="@+id/step_progress_bar"
-                style="?android:progressBarStyleHorizontal"
-                android:layout_width="277dp"
-                android:layout_height="306dp"
-                android:background="@drawable/circle_shape"
-                android:indeterminate="false"
-                android:progressDrawable="@drawable/circular_progress_bar"
-                android:layout_gravity="center"
-                android:layout_marginBottom="190sp"/>
-            <TextView
-                android:id="@+id/stepsTaken"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:textColor="#D4D4D4"
-                android:textSize="38sp"
-                android:layout_gravity="center"
-                android:layout_marginBottom="175sp"/>
 
-            <TextView
-                android:id="@+id/totalSteps"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="steps"
-                android:textColor="#818080"
-                android:textSize="15sp"
-                android:layout_gravity="center"
-                android:layout_marginBottom="130sp"/>
+<!--            <ProgressBar-->
+<!--                android:id="@+id/step_progress_bar"-->
+<!--                style="?android:progressBarStyleHorizontal"-->
+<!--                android:layout_width="277dp"-->
+<!--                android:layout_height="306dp"-->
+<!--                android:background="@drawable/circle_shape"-->
+<!--                android:indeterminate="false"-->
+<!--                android:progressDrawable="@drawable/circular_progress_bar"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:layout_marginBottom="190sp"/>-->
+<!--            <TextView-->
+<!--                android:id="@+id/stepsTaken"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text=""-->
+<!--                android:textColor="#D4D4D4"-->
+<!--                android:textSize="38sp"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:layout_marginBottom="175sp"/>-->
 
-            <ImageView
-                android:id="@+id/stepIcon"
-                android:layout_width="36dp"
-                android:layout_height="33dp"
-                android:src="@drawable/ic_footstep_1"
-                android:layout_gravity="center"
-                android:layout_marginBottom="250sp" />
+<!--            <TextView-->
+<!--                android:id="@+id/totalSteps"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="steps"-->
+<!--                android:textColor="#818080"-->
+<!--                android:textSize="15sp"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:layout_marginBottom="130sp"/>-->
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerView"
-                android:layout_width="409dp"
-                android:layout_height="match_parent"
-                android:layout_marginTop="350sp" />
+<!--            <ImageView-->
+<!--                android:id="@+id/stepIcon"-->
+<!--                android:layout_width="36dp"-->
+<!--                android:layout_height="33dp"-->
+<!--                android:src="@drawable/ic_footstep_1"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:layout_marginBottom="250sp" />-->
+
+<!--            <androidx.recyclerview.widget.RecyclerView-->
+<!--                android:id="@+id/recyclerView"-->
+<!--                android:layout_width="409dp"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_marginTop="350sp" />-->
 
             <!--            <ProgressBar-->
 <!--                android:id="@+id/calories_progress_bar"-->

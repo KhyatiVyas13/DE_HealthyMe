@@ -57,26 +57,26 @@ public class HomeActivity extends AppCompatActivity {
         //NoActionbar
         getSupportActionBar().hide();
 
-        //Progressbar for step counted
-        mainProgressBar = findViewById(R.id.step_progress_bar);
-        stepTaken = findViewById(R.id.stepsTaken);
-        totalSteps = findViewById(R.id.totalSteps);
-
-        final Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-
-                if (i <= 6000){
-                    stepTaken.setText("" + i);
-                    mainProgressBar.setProgress(i);
-                    i++;
-                    handler.postDelayed(this, 1200);
-                }else {
-                    handler.removeCallbacks(this);
-                }
-            }
-        },1200);
+//        //Progressbar for step counted
+//        mainProgressBar = findViewById(R.id.step_progress_bar);
+//        stepTaken = findViewById(R.id.stepsTaken);
+//        totalSteps = findViewById(R.id.totalSteps);
+//
+//        final Handler handler = new Handler();
+//        handler.postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//
+//                if (i <= 6000){
+//                    stepTaken.setText("" + i);
+//                    mainProgressBar.setProgress(i);
+//                    i++;
+//                    handler.postDelayed(this, 1200);
+//                }else {
+//                    handler.removeCallbacks(this);
+//                }
+//            }
+//        },1200);
 //
 //        //Calories Progressbar
 //        caloriesProgressBar = findViewById(R.id.calories_progress_bar);
@@ -136,7 +136,7 @@ public class HomeActivity extends AppCompatActivity {
 //        },300);
 
         //Initializing vectors in recycler view
-        initImages();
+        //initImages();
 
         //navigation drawer
         sNavigationDrawer = findViewById(R.id.navDrawer);
@@ -154,7 +154,8 @@ public class HomeActivity extends AppCompatActivity {
         menuItems.add(new MenuItem("Logout",R.mipmap.ic_launcher));
 
         sNavigationDrawer.setMenuItemList(menuItems);
-        fragmentClass = ProfileFragment.class;
+
+        fragmentClass = HomeFragment.class;
         try {
             fragment = (Fragment)fragmentClass.newInstance();
         }catch (IllegalAccessException e){
@@ -169,45 +170,74 @@ public class HomeActivity extends AppCompatActivity {
 
         }
 
+        //Menu Item selection listener
+        sNavigationDrawer.setOnMenuItemClickListener(new SNavigationDrawer.OnMenuItemClickListener() {
+                                                         @Override
+                                                         public void onMenuItemClicked(int position) {
+                                                             System.out.println("Position " + position);
 
-       sNavigationDrawer.setDrawerListener(new SNavigationDrawer.DrawerListener() {
-           @Override
-           public void onDrawerOpening() {
+                                                             switch (position) {
+                                                                 case 0: {
+                                                                      fragmentClass = HomeFragment.class;
+                                                                     break;
+                                                                 }
+                                                                 case 1: {
+                                                                      fragmentClass = ProfileFragment.class;
+                                                                     break;
+                                                                 }
+                                                                 case 2: {
+                                                                      fragmentClass = SavedReportsFragment.class;
+                                                                     break;
+                                                                 }
+                                                                 case 3: {
+                                                                     // fragmentClass = MusicFragment.class;
+                                                                     break;
+                                                                 }
 
-           }
+                                                             }
 
-           @Override
-           public void onDrawerClosing() {
-               try {
-                   fragment = (Fragment)fragmentClass.newInstance();
-               }catch (IllegalAccessException e){
-                   e.printStackTrace();
-               }catch (InstantiationException e){
-                   e.printStackTrace();
-               }
 
-               if(fragment != null){
-                   FragmentManager fragmentManager = getSupportFragmentManager();
-                   fragmentManager.beginTransaction().setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out).replace(R.id.mainLayout,fragment).commit();
+                                                             sNavigationDrawer.setDrawerListener(new SNavigationDrawer.DrawerListener() {
+                                                                 @Override
+                                                                 public void onDrawerOpening() {
 
-               }
-           }
+                                                                 }
 
-           @Override
-           public void onDrawerOpened() {
+                                                                 @Override
+                                                                 public void onDrawerClosing() {
+                                                                     try {
+                                                                         fragment = (Fragment) fragmentClass.newInstance();
+                                                                     } catch (IllegalAccessException e) {
+                                                                         e.printStackTrace();
+                                                                     } catch (InstantiationException e) {
+                                                                         e.printStackTrace();
+                                                                     }
 
-           }
+                                                                     if (fragment != null) {
+                                                                         FragmentManager fragmentManager = getSupportFragmentManager();
+                                                                         fragmentManager.beginTransaction().setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out).replace(R.id.mainLayout, fragment).commit();
 
-           @Override
-           public void onDrawerClosed() {
+                                                                     }
+                                                                 }
 
-           }
+                                                                 @Override
+                                                                 public void onDrawerOpened() {
 
-           @Override
-           public void onDrawerStateChanged(int newState) {
+                                                                 }
 
-           }
-       });
+                                                                 @Override
+                                                                 public void onDrawerClosed() {
+
+                                                                 }
+
+                                                                 @Override
+                                                                 public void onDrawerStateChanged(int newState) {
+                                                                     System.out.println("State "+newState);
+                                                                 }
+                                                             });
+                                                         }
+                                                     });
+
 
 //        //Recycler view
 //        recyclerView = findViewById(R.id.recyclerView);
@@ -220,30 +250,30 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     //for vectors
-    private void initImages(){
+//    private void initImages(){
+//
+//        hImage.add(R.drawable.health);
+//        hName.add("About your Health");
+//
+//        hImage.add(R.drawable.heart_rate);
+//        hName.add("Heart rate");
+//
+//        hImage.add(R.drawable.temperature);
+//        hName.add("Body Temperature");
+//
+//        hImage.add(R.drawable.sleep);
+//        hName.add("Sleep-O-Meter");
+//
+//        initRecyclerView();
+//    }
 
-        hImage.add(R.drawable.health);
-        hName.add("About your Health");
-
-        hImage.add(R.drawable.heart_rate);
-        hName.add("Heart rate");
-
-        hImage.add(R.drawable.temperature);
-        hName.add("Body Temperature");
-
-        hImage.add(R.drawable.sleep);
-        hName.add("Sleep-O-Meter");
-
-        initRecyclerView();
-    }
-
-    private void initRecyclerView(){
-
-        RecyclerView recyclerView = findViewById(R.id.recyclerView);
-        StaggeredHomeAdapter staggeredHomeAdapter = new StaggeredHomeAdapter(this,hName,hImage);
-        StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(NUM_COLS,LinearLayoutManager.VERTICAL);
-        recyclerView.setLayoutManager(staggeredGridLayoutManager);
-        recyclerView.setAdapter(staggeredHomeAdapter);
-    }
+//    private void initRecyclerView(){
+//
+//        RecyclerView recyclerView = findViewById(R.id.recyclerView);
+//        StaggeredHomeAdapter staggeredHomeAdapter = new StaggeredHomeAdapter(this,hName,hImage);
+//        StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(NUM_COLS,LinearLayoutManager.VERTICAL);
+//        recyclerView.setLayoutManager(staggeredGridLayoutManager);
+//        recyclerView.setAdapter(staggeredHomeAdapter);
+//    }
 
 }
