@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:backgroundTint="#FFD5CD"
+    app:cardCornerRadius="10sp"
+    android:elevation="3dp"
+    app:cardUseCompatPadding="true">
+
+<!--    <androidx.cardview.widget.CardView-->
+<!--        android:id="@+id/dateCard"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:backgroundTint="#FFD5CD"-->
+<!--        android:layout_marginTop="1sp"-->
+<!--        app:cardCornerRadius="10sp"-->
+<!--        android:elevation="3dp"-->
+<!--        app:cardUseCompatPadding="true">-->
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="7dp">
+
+            <TextView
+                android:id="@+id/healthAdvice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15sp"
+                android:fontFamily="@font/roboto_medium"
+                android:text="Advice"
+                android:textColor="#515070"
+                android:textSize="17sp"/>
+
+<!--            <TextView-->
+<!--                android:id="@+id/date"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginStart="65sp"-->
+<!--                android:layout_marginTop="5sp"-->
+<!--                android:fontFamily="@font/roboto_medium"-->
+<!--                android:gravity="center"-->
+<!--                android:text="Jan 1, 2021"-->
+<!--                android:textColor="#515070"-->
+<!--                android:textSize="20sp"/>-->
+
+        </RelativeLayout>
+<!--    </androidx.cardview.widget.CardView>-->
+
+<!--    <androidx.cardview.widget.CardView-->
+<!--        android:id="@+id/healthAdviceCard"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:cardCornerRadius="30sp"-->
+<!--        app:cardElevation="3sp"-->
+<!--        android:layout_marginTop="15sp"-->
+<!--        android:layout_below="@+id/dateCard"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        android:backgroundTint="#F56A79">-->
+
+<!--        <RelativeLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:padding="10dp">-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/adviceTitle"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Health Advice"-->
+<!--                android:textColor="#DBD5DC"-->
+<!--                android:textStyle="bold"-->
+<!--                android:fontFamily="@font/roboto_medium"-->
+<!--                android:textSize="30sp"-->
+<!--                android:layout_marginStart="90sp"-->
+<!--                android:layout_marginTop="8sp"/>-->
+<!--            <TextView-->
+<!--                android:id="@+id/advice1"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text=""-->
+<!--                android:textColor="#FFFFFF"-->
+<!--                android:fontFamily="@font/roboto_medium"-->
+<!--                android:textSize="23sp"-->
+<!--                android:layout_below="@id/adviceTitle"-->
+<!--                android:layout_marginTop="20sp"-->
+<!--                android:layout_marginStart="60sp"/>-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/advice2"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text=""-->
+<!--                android:textColor="#FFFFFF"-->
+<!--                android:fontFamily="@font/roboto_medium"-->
+<!--                android:textSize="23sp"-->
+<!--                android:layout_below="@id/advice1"-->
+<!--                android:layout_marginTop="15sp"-->
+<!--                android:layout_marginStart="60sp"/>-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/advice3"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text=""-->
+<!--                android:textColor="#FFFFFF"-->
+<!--                android:fontFamily="@font/roboto_medium"-->
+<!--                android:textSize="23sp"-->
+<!--                android:layout_below="@id/advice2"-->
+<!--                android:layout_marginTop="15sp"-->
+<!--                android:layout_marginStart="60sp"/>-->
+
+<!--        </RelativeLayout>-->
+<!--    </androidx.cardview.widget.CardView>-->
+
+</androidx.cardview.widget.CardView>

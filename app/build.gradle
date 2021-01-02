@@ -41,4 +41,7 @@ dependencies {
 
     //custom navigation drawer
     implementation 'com.github.shrikanth7698:Custom-Navigation-Drawer:v0.0.1'
+
+    //Chart
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
 }

@@ -35,6 +35,7 @@ public class HomeActivity extends AppCompatActivity {
     private ArrayList<String> hName = new ArrayList<>();
     private ArrayList<Integer> hImage = new ArrayList<>();
 
+
 //    String[] Title = {"About your health", "Body Temperature", "Heart rate", "Sleep"};
 //    String[] Description = {"You need to do some exercise \n Walk more", "96.7 f", "75 BPM", "6 Hrs 45 Mins"};
 //    int[] vectors = {R.drawable.ic_health_prediction, R.drawable.ic_temprature_icon, R.drawable.ic_heartrate, R.drawable.ic_sleep};
@@ -146,12 +147,12 @@ public class HomeActivity extends AppCompatActivity {
 
         //Adding menu items
         List<MenuItem> menuItems = new ArrayList<>();
-        menuItems.add(new MenuItem("Home",R.mipmap.ic_launcher));
-        menuItems.add(new MenuItem("Profile",R.mipmap.ic_launcher));
-        menuItems.add(new MenuItem("Saved Reports",R.mipmap.ic_launcher));
-        menuItems.add(new MenuItem("FAQs",R.mipmap.ic_launcher));
-        menuItems.add(new MenuItem("About us",R.mipmap.ic_launcher));
-        menuItems.add(new MenuItem("Logout",R.mipmap.ic_launcher));
+        menuItems.add(new MenuItem("Home",R.drawable.ic_bg));
+        menuItems.add(new MenuItem("Profile",R.drawable.ic_bg));
+        menuItems.add(new MenuItem("Saved Reports",R.drawable.ic_bg));
+        menuItems.add(new MenuItem("FAQs",R.drawable.ic_bg));
+        menuItems.add(new MenuItem("About us",R.drawable.ic_bg));
+        menuItems.add(new MenuItem("Logout",R.drawable.ic_bg));
 
         sNavigationDrawer.setMenuItemList(menuItems);
 
@@ -190,7 +191,7 @@ public class HomeActivity extends AppCompatActivity {
                                                                      break;
                                                                  }
                                                                  case 3: {
-                                                                     // fragmentClass = MusicFragment.class;
+                                                                     // fragmentClass = FAQFragment.class;
                                                                      break;
                                                                  }
 

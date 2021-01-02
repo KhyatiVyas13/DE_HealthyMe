@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".AboutHealthFragment"
+    android:background="#080808">
+
+    <ImageView
+        android:id="@+id/titleVector"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/ic_health_prediction"
+        android:layout_gravity="left"
+        android:layout_marginStart="35sp"
+        android:layout_marginTop="35dp"/>
+
+    <TextView
+        android:id="@+id/healthTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Health Advice"
+        android:textColor="#803D87"
+        android:textSize="30sp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginStart="10sp"
+        android:layout_marginTop="35dp"
+        android:textStyle="bold"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/healthRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="100sp"/>
+
+</FrameLayout>

@@ -84,6 +84,7 @@ public class HomeFragment extends Fragment {
         recyclerView.setAdapter(staggeredHomeAdapter);
 
 
+
         return view;
     }
 }
