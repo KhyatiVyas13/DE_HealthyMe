@@ -36,7 +36,7 @@ public class HomeFragment extends Fragment {
 
         //initializing vectors
         hImage.add(R.drawable.health);
-        hName.add("About your Health");
+        hName.add("Your Health");
 
         hImage.add(R.drawable.heart_rate);
         hName.add("Heart rate");

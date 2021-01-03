@@ -20,7 +20,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Heart Rate"
-        android:textColor="#803D87"
+        android:textColor="#AB52B5"
         android:textSize="30sp"
         android:layout_gravity="center_horizontal"
         android:layout_marginStart="10sp"

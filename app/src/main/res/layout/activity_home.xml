@@ -22,7 +22,7 @@
             android:id="@+id/mainLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#080808">
+            android:background="#0E0E0E">
 
 
 <!--            <ProgressBar-->
