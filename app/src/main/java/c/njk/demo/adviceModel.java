@@ -8,6 +8,10 @@ public class adviceModel {
         this.advice = advice;
     }
 
+    public adviceModel(int i, int i1) {
+
+    }
+
     public String getAdvice() {
         return advice;
     }

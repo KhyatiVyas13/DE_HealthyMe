@@ -60,6 +60,9 @@ public class StaggeredHomeAdapter extends RecyclerView.Adapter<StaggeredHomeAdap
                  if(position == 0) {
                      Fragment healthFrag = new AboutHealthFragment();
                      activity.getSupportFragmentManager().beginTransaction().setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out).replace(R.id.mainLayout, healthFrag).addToBackStack(null).commit();
+                 }else if(position == 1){
+                     Fragment heartFrag = new HeartRateFragment();
+                     activity.getSupportFragmentManager().beginTransaction().setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out).replace(R.id.mainLayout, heartFrag).addToBackStack(null).commit();
                  }
                  }
              });

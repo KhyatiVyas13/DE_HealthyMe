@@ -1,13 +1,156 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <FrameLayout
         android:id="@+id/profileFrame"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/header">
+        android:background="#080808">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profileImg"
+            android:layout_width="90sp"
+            android:layout_height="90sp"
+            android:src="@drawable/ic_girl"
+            android:layout_marginTop="25sp"
+            android:layout_marginStart="15sp"
+            app:civ_border_width="2dp"/>
+
+        <TextView
+            android:id="@+id/userName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Monica"
+            android:textColor="#D4D4D4"
+            android:textSize="27sp"
+            android:fontFamily="@font/roboto_medium"
+            android:layout_marginStart="115sp"
+            android:layout_marginTop="25sp"/>
+
+        <TextView
+            android:id="@+id/userEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="abc@mail.com"
+            android:textColor="#A3A3A3"
+            android:textSize="18sp"
+            android:fontFamily="@font/roboto_medium"
+            android:layout_marginStart="115sp"
+            android:layout_marginTop="70sp"/>
+
+        <ImageView
+            android:id="@+id/editInfoButton"
+            android:layout_width="30sp"
+            android:layout_height="30sp"
+            android:src="@drawable/ic_edit"
+            android:layout_marginStart="320sp"
+            android:layout_marginTop="35sp"/>
+
+        <TextView
+            android:id="@+id/otherInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="--------------Other Information---------------"
+            android:textSize="18sp"
+            android:textColor="#8E8E8E"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="150sp"/>
+
+        <EditText
+            android:id="@+id/userGender"
+            android:layout_width="125sp"
+            android:layout_height="53sp"
+            android:background="@drawable/profile_edit_text_bg"
+            android:fontFamily="@font/roboto_medium"
+            android:text="Female"
+            android:hint="Gender"
+            android:inputType="text"
+            android:textColor="#D8B09E"
+            android:textColorHint="@color/header"
+            android:textSize="19sp"
+            android:layout_marginTop="200sp"
+            android:layout_marginStart="40sp"
+            android:textAlignment="center"/>
+<!--            android:clickable="false"-->
+<!--            android:focusable="false"-->
+<!--            android:focusableInTouchMode="false"-->
+<!--            android:cursorVisible="false"/>-->
+
+        <EditText
+            android:id="@+id/userHeight"
+            android:layout_width="125sp"
+            android:layout_height="53sp"
+            android:background="@drawable/profile_edit_text_bg"
+            android:fontFamily="@font/roboto_medium"
+            android:text="5 ' 3''"
+            android:hint="Height"
+            android:inputType="number"
+            android:textColor="#D8B09E"
+            android:textColorHint="@color/header"
+            android:textSize="19sp"
+            android:layout_marginTop="200sp"
+            android:layout_marginStart="200sp"
+            android:textAlignment="center"/>
+
+        <EditText
+            android:id="@+id/userWeight"
+            android:layout_width="125sp"
+            android:layout_height="53sp"
+            android:background="@drawable/profile_edit_text_bg"
+            android:fontFamily="@font/roboto_medium"
+            android:text="50 kg"
+            android:hint="Weight"
+            android:inputType="number"
+            android:textColor="#D8B09E"
+            android:textColorHint="@color/header"
+            android:textSize="19sp"
+            android:layout_marginTop="280sp"
+            android:layout_marginStart="40sp"
+            android:textAlignment="center"/>
+
+        <EditText
+            android:id="@+id/userBirthday"
+            android:layout_width="125sp"
+            android:layout_height="53sp"
+            android:background="@drawable/profile_edit_text_bg"
+            android:fontFamily="@font/roboto_medium"
+            android:text="01/01/2021"
+            android:hint="Birthday"
+            android:inputType="date"
+            android:textColor="#D8B09E"
+            android:textColorHint="@color/header"
+            android:textSize="19sp"
+            android:layout_marginTop="280sp"
+            android:layout_marginStart="200sp"
+            android:textAlignment="center"/>
+
+        <Button
+            android:id="@+id/cancelButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="570sp"
+            android:layout_marginStart="10sp"
+            android:layout_marginEnd="10sp"
+            android:background="@drawable/button_radius"
+            android:text="Cancel"
+            android:textColor="@color/Actions"
+            android:layout_gravity="center_horizontal"/>
+
+        <Button
+            android:id="@+id/saveButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="500sp"
+            android:layout_marginStart="10sp"
+            android:layout_marginEnd="10sp"
+            android:background="@drawable/custome_button"
+            android:text="Save"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:layout_gravity="center_horizontal"/>
 
     </FrameLayout>
 
