@@ -3,6 +3,7 @@ package c.njk.demo;
 import android.content.ClipData;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -60,12 +61,12 @@ public class StaggeredHomeAdapter extends RecyclerView.Adapter<StaggeredHomeAdap
                  if(position == 0) {
                      Fragment healthFrag = new AboutHealthFragment();
                      activity.getSupportFragmentManager().beginTransaction().setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out).replace(R.id.mainLayout, healthFrag).addToBackStack(null).commit();
-                 }else if(position == 1){
-                     Fragment heartFrag = new HeartRateFragment();
-                     activity.getSupportFragmentManager().beginTransaction().setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out).replace(R.id.mainLayout, heartFrag).addToBackStack(null).commit();
                  }
                  }
              });
+
+        Typeface kohoFont1 = Typeface.createFromAsset(context.getAssets(),"fonts/KoHo-Bold.ttf");
+        holder.name.setTypeface(kohoFont1);
     }
 
     @Override

@@ -190,10 +190,18 @@ public class HomeActivity extends AppCompatActivity {
                                                                       fragmentClass = SavedReportsFragment.class;
                                                                      break;
                                                                  }
-                                                                 case 3: {
-                                                                     // fragmentClass = FAQFragment.class;
-                                                                     break;
-                                                                 }
+//                                                                 case 3: {
+//                                                                     fragmentClass = SavedReportsFragment.class;
+//                                                                     break;
+//                                                                 }
+//
+//                                                                 case 4:{
+//                                                                     fragmentClass = SavedReportsFragment.class;
+//                                                                     break;
+//                                                                 }
+//                                                                 case 5:{
+//
+//                                                                 }
 
                                                              }
 

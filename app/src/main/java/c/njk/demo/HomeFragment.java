@@ -1,5 +1,6 @@
 package c.njk.demo;
 
+import android.graphics.Typeface;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -11,6 +12,7 @@ import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -27,6 +29,10 @@ public class HomeFragment extends Fragment {
     private ArrayList<String> hName = new ArrayList<>();
     private ArrayList<Integer> hImage = new ArrayList<>();
 
+    private ArrayList<String> tName = new ArrayList<>();
+    private ArrayList<String> tValue = new ArrayList<>();
+    private ArrayList<Integer> tImage = new ArrayList<>();
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -35,17 +41,34 @@ public class HomeFragment extends Fragment {
 
 
         //initializing vectors
-        hImage.add(R.drawable.health);
-        hName.add("Your Health");
+        hImage.add(R.drawable.ic_health_);
+        hName.add("Health Advice");
 
-        hImage.add(R.drawable.heart_rate);
-        hName.add("Heart rate");
+//        hImage.add(R.drawable.heart_rate);
+//        hName.add("Heart rate");
 
-        hImage.add(R.drawable.temperature);
-        hName.add("Body Temperature");
+//        hImage.add(R.drawable.temperature);
+//        hName.add("Body Temperature");
+//
+//        hImage.add(R.drawable.sleep);
+//        hName.add("Sleep-O-Meter");
 
-        hImage.add(R.drawable.sleep);
-        hName.add("Sleep-O-Meter");
+        tImage.add(R.drawable.ic_thermometer);
+        tName.add("Body Temperature");
+        tValue.add("98.7 f");
+
+        tImage.add(R.drawable.ic_moon);
+        tName.add("Sleep");
+        tValue.add("7 Hrs 35 Min");
+
+        tImage.add(R.drawable.ic_heart);
+        tName.add("Heart Rate");
+        tValue.add("80 BPM");
+
+        tImage.add(R.drawable.ic_active_time);
+        tName.add("Active Time");
+        tValue.add("35 Min");
+
 
     }
 
@@ -83,7 +106,17 @@ public class HomeFragment extends Fragment {
         recyclerView.setLayoutManager(staggeredGridLayoutManager);
         recyclerView.setAdapter(staggeredHomeAdapter);
 
+        //another recyclerView
+        RecyclerView recyclerView2 = view.findViewById(R.id.secondRecyclerView);
+        TemperatureAdapter temperatureAdapter = new TemperatureAdapter(getContext(),tName,tImage,tValue);
+        StaggeredGridLayoutManager staggeredGridLayoutManager2 = new StaggeredGridLayoutManager(NUM_COLS, LinearLayoutManager.VERTICAL);
+        //recyclerView2.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView2.setLayoutManager(staggeredGridLayoutManager2);
+        recyclerView2.setAdapter(temperatureAdapter);
 
+
+        Typeface kohoFont = Typeface.createFromAsset(getActivity().getAssets(),"fonts/KoHo-Medium.ttf");
+        stepTaken.setTypeface(kohoFont);
 
         return view;
     }

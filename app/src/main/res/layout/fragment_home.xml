@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".HomeFragment"
     android:background="@color/colorPrimary">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
     <ProgressBar
         android:id="@+id/step_progress_bar"
@@ -13,8 +17,9 @@
         android:layout_height="306dp"
         android:background="@drawable/circle_shape"
         android:indeterminate="false"
+        android:max="1000"
         android:progressDrawable="@drawable/circular_progress_bar"
-        android:layout_gravity="center"
+        android:layout_gravity="center_horizontal"
         android:layout_marginBottom="190sp"/>
     <TextView
         android:id="@+id/stepsTaken"
@@ -23,31 +28,41 @@
         android:text=""
         android:textColor="#D4D4D4"
         android:textSize="38sp"
-        android:layout_gravity="center"
-        android:layout_marginBottom="175sp"/>
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="125sp"/>
 
     <TextView
         android:id="@+id/totalSteps"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="steps"
+        android:text="/1000 steps"
         android:textColor="#818080"
         android:textSize="15sp"
-        android:layout_gravity="center"
-        android:layout_marginBottom="130sp"/>
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="190sp"/>
 
     <ImageView
         android:id="@+id/stepIcon"
         android:layout_width="36dp"
         android:layout_height="33dp"
         android:src="@drawable/ic_footstep_1"
-        android:layout_gravity="center"
-        android:layout_marginBottom="250sp" />
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="75sp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/secondRecyclerView"
+            android:layout_width="409dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="330sp"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="409dp"
         android:layout_height="match_parent"
-        android:layout_marginTop="350sp" />
+        android:layout_marginTop="604sp" />
 
-</FrameLayout>
+
+
+    </FrameLayout>
+
+</ScrollView>
