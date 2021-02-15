@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "728804696008",
+    "project_id": "dehealthyme1",
+    "storage_bucket": "dehealthyme1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:728804696008:android:cc03f946aac099c9292afd",
+        "android_client_info": {
+          "package_name": "c.njk.demo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "728804696008-eu10ijgeaab9ipi6aolostlnfk5512cu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "c.njk.demo",
+            "certificate_hash": "c5ed5d6a9508031163c85b3b23431345698cb7a3"
+          }
+        },
+        {
+          "client_id": "728804696008-keg14ure1i3tmr8e8rrb7gsufud8i08r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDO8f-dLYVaEMZgJGPfLyUaUGFm-vv8SEo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "728804696008-keg14ure1i3tmr8e8rrb7gsufud8i08r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
