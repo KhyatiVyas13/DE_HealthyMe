@@ -17,6 +17,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -71,46 +72,51 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
-    private void userLogin()
-    {
-        String inputemail= email.getText().toString().trim();
-        String inputpassword= password.getText().toString().trim();
+    private void userLogin() {
+        String inputemail = email.getText().toString().trim();
+        String inputpassword = password.getText().toString().trim();
 
-        if (inputemail.isEmpty()){
+        if (inputemail.isEmpty()) {
             email.setError("Email is Required");
             email.requestFocus();
             return;
-        }
-        if(!Patterns.EMAIL_ADDRESS.matcher(inputemail).matches()){
+        } else if (!Patterns.EMAIL_ADDRESS.matcher(inputemail).matches()) {
             email.setError("Please enter a valid email");
             email.requestFocus();
             return;
-        }
-
-        if (inputpassword.isEmpty()){
+        } else if (inputpassword.isEmpty()) {
             password.setError("Password is Required");
             password.requestFocus();
             return;
-        }
-        if(inputpassword.length()<6){
+        } else if (inputpassword.length() < 6) {
             password.setError("Minimum length of password should be 6");
             password.requestFocus();
             return;
 
-        }
-        progressBar.setVisibility(View.VISIBLE);
-        mAuth.signInWithEmailAndPassword(inputemail,inputpassword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                progressBar.setVisibility(View.GONE);
-                if(task.isSuccessful()){
-                    Intent intent= new Intent(LoginActivity.this,HomeActivity.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    startActivity(intent);
-                }else {
-                    Toast.makeText(getApplicationContext(),task.getException().getMessage(),Toast.LENGTH_LONG).show();
+        } else {
+            progressBar.setVisibility(View.VISIBLE);
+            mAuth.signInWithEmailAndPassword(inputemail, inputpassword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task) {
+                    progressBar.setVisibility(View.GONE);
+                    if (task.isSuccessful()) {
+                        Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(intent);
+                    } else {
+                        Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                    }
                 }
-            }
-        });
+            });
+        }
     }
+    /*protected void onStart() {
+
+        super.onStart();
+        FirebaseUser user=mAuth.getCurrentUser();
+        if(user!=null){
+            startActivity(new Intent(LoginActivity.this,HomeActivity.class));
+            finish();
+        }
+    }*/
 }
