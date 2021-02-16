@@ -17,6 +17,7 @@ public class ForgotPasswordActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forgot_password);
+        getSupportActionBar().hide();
 
         email = findViewById(R.id.resetEmail);
         getLink = findViewById(R.id.linkButton);
@@ -24,10 +25,11 @@ public class ForgotPasswordActivity extends AppCompatActivity {
         getLink.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(ForgotPasswordActivity.this, "Email sent to your mail address!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ForgotPasswordActivity.this, "Reset password link sent to your mail address!", Toast.LENGTH_SHORT).show();
 
                 Intent intent = new Intent(ForgotPasswordActivity.this,LoginActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
     }

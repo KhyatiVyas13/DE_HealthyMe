@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.hardware.SensorManager;
 import android.os.Build;
@@ -190,18 +191,22 @@ public class HomeActivity extends AppCompatActivity {
                                                                       fragmentClass = SavedReportsFragment.class;
                                                                      break;
                                                                  }
-//                                                                 case 3: {
-//                                                                     fragmentClass = SavedReportsFragment.class;
-//                                                                     break;
-//                                                                 }
-//
-//                                                                 case 4:{
-//                                                                     fragmentClass = SavedReportsFragment.class;
-//                                                                     break;
-//                                                                 }
-//                                                                 case 5:{
-//
-//                                                                 }
+                                                                 case 3: {
+                                                                     fragmentClass = SavedReportsFragment.class;
+                                                                     break;
+                                                                 }
+
+                                                                 case 4:{
+                                                                     fragmentClass = SavedReportsFragment.class;
+                                                                     break;
+                                                                 }
+                                                                 //case 5 is for logout
+                                                                 case 5:{
+                                                                     startActivity(new Intent(HomeActivity.this,LoginActivity.class));
+                                                                     finish();
+                                                                     break;
+
+                                                                 }
 
                                                              }
 

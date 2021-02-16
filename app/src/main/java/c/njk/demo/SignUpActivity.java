@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
@@ -11,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -21,7 +23,7 @@ import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 
 public class SignUpActivity extends AppCompatActivity {
 
-
+    private TextView msg,gotoLogin;
     private EditText name, email, phone, password;
     private Button signUpButton;
     private ImageView back;
@@ -39,6 +41,12 @@ public class SignUpActivity extends AppCompatActivity {
         password = findViewById(R.id.signUpPassword);
         signUpButton = findViewById(R.id.signUpButton);
         back = findViewById(R.id.back);
+        msg = findViewById(R.id.msg);
+        gotoLogin = findViewById(R.id.gotoLogin);
+
+        //for Customised font
+        Typeface kohoFont = Typeface.createFromAsset(getAssets(),"fonts/KoHo-Medium.ttf");
+        msg.setTypeface(kohoFont);
 
         progressBar=(ProgressBar)findViewById(R.id.progressbar);
         mAuth = FirebaseAuth.getInstance();
@@ -56,6 +64,16 @@ public class SignUpActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(SignUpActivity.this , LoginActivity.class);
                 startActivity(intent);
+                finish();
+            }
+        });
+
+        //for go to login
+        gotoLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(SignUpActivity.this, LoginActivity.class));
+                finish();
             }
         });
 
