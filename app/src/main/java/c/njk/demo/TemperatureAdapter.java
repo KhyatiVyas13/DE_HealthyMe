@@ -25,10 +25,8 @@ public class TemperatureAdapter extends RecyclerView.Adapter<TemperatureAdapter.
     private ArrayList<Integer> tImage = new ArrayList<>();
     private Context context;
 
-    public TemperatureAdapter(Context context,ArrayList<String> tName, ArrayList<Integer> tImage, ArrayList<String> tValue ) {
-        this.tName = tName;
-        this.tValue = tValue;
-        this.tImage = tImage;
+    public TemperatureAdapter(Context context ) {
+
         this.context = context;
     }
 
@@ -71,6 +69,13 @@ public class TemperatureAdapter extends RecyclerView.Adapter<TemperatureAdapter.
 
     }
 
+    public void setData(ArrayList<String> tName, ArrayList<Integer> tImage, ArrayList<String> tValue){
+        this.tName = tName;
+        this.tValue = tValue;
+        this.tImage = tImage;
+        notifyDataSetChanged();
+    }
+
     @Override
     public int getItemCount() {
         return tImage.size();
@@ -87,5 +92,13 @@ public class TemperatureAdapter extends RecyclerView.Adapter<TemperatureAdapter.
             titleName = itemView.findViewById(R.id.title_name);
             value = itemView.findViewById(R.id.tv_value);
         }
+    }
+
+
+    public void clear(){
+        tName = new ArrayList();
+        tValue = new ArrayList();
+        tImage = new ArrayList();
+        notifyDataSetChanged();
     }
 }

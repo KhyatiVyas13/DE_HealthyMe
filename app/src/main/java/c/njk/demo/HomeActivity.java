@@ -1,26 +1,27 @@
 package c.njk.demo;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.recyclerview.widget.StaggeredGridLayoutManager;
-import kotlin.Unit;
-import kotlin.jvm.functions.Function1;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
-import android.hardware.SensorManager;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.mikhaellopez.circularprogressbar.CircularProgressBar;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.shrikanthravi.customnavigationdrawer2.data.MenuItem;
 import com.shrikanthravi.customnavigationdrawer2.widget.SNavigationDrawer;
 
@@ -35,6 +36,9 @@ public class HomeActivity extends AppCompatActivity {
     private static final int NUM_COLS = 2;
     private ArrayList<String> hName = new ArrayList<>();
     private ArrayList<Integer> hImage = new ArrayList<>();
+    public static final String mypreference = "mypref";
+    public static final String Name = "loginKey";
+    SharedPreferences sharedpreferences;
 
 
 //    String[] Title = {"About your health", "Body Temperature", "Heart rate", "Sleep"};
@@ -49,7 +53,7 @@ public class HomeActivity extends AppCompatActivity {
     private SNavigationDrawer sNavigationDrawer;
     Class fragmentClass;
     public static Fragment fragment;
-
+    String userId;
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +62,41 @@ public class HomeActivity extends AppCompatActivity {
 
         //NoActionbar
         getSupportActionBar().hide();
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+        if (user == null) {
+            // No session user
+            return;
+        }
+
+        userId = user.getUid();
+
+        Health health = new Health("90.8 f", "100 BPM", "100");
+
+        //Example you need save a Store in
+
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+
+        DatabaseReference healthData = database.getReference("healthData");
+
+//        healthData.child(userId).setValue(health);
+
+        healthData.child(userId).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+//                for(DataSnapshot ds : snapshot.getChildren()){
+//                    Log.e("DataSnapShot", ds.getValue(Store.class).getUrl());
+//                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
 //        //Progressbar for step counted
 //        mainProgressBar = findViewById(R.id.step_progress_bar);
@@ -202,6 +241,14 @@ public class HomeActivity extends AppCompatActivity {
                                                                  }
                                                                  //case 5 is for logout
                                                                  case 5:{
+                                                                     sharedpreferences = getSharedPreferences(mypreference,
+                                                                             Context.MODE_PRIVATE);
+                                                                     SharedPreferences.Editor editor = sharedpreferences.edit();
+
+                                                                     editor.putBoolean(Name, false);
+                                                                     editor.commit();
+
+                                                                     FirebaseAuth.getInstance().signOut();
                                                                      startActivity(new Intent(HomeActivity.this,LoginActivity.class));
                                                                      finish();
                                                                      break;

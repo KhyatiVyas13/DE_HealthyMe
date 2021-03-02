@@ -2,7 +2,9 @@ package c.njk.demo;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Handler;
@@ -14,6 +16,11 @@ public class MainActivity extends AppCompatActivity {
     public static int SPLASH_SCREEN = 4000;
     private TextView textView;
     private ImageView vector;
+
+    public static final String mypreference = "mypref";
+    SharedPreferences sharedpreferences;
+    public static final String Name = "loginKey";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,13 +36,21 @@ public class MainActivity extends AppCompatActivity {
         Typeface kohoFont = Typeface.createFromAsset(getAssets(),"fonts/KoHo-Medium.ttf");
         textView.setTypeface(kohoFont);
 
+        sharedpreferences = getSharedPreferences(mypreference,
+                Context.MODE_PRIVATE);
+
+
+
         //Splash_Screen
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(MainActivity.this , LoginActivity.class);
-                startActivity(intent);
-                finish();
+
+            Intent intent = new Intent(MainActivity.this , LoginActivity.class);
+            startActivity(intent);
+            finish();
+
+
             }
         } , SPLASH_SCREEN);
     }

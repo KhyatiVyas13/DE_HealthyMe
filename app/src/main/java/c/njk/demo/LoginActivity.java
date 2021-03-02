@@ -3,8 +3,11 @@ package c.njk.demo;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
@@ -26,6 +29,11 @@ public class LoginActivity extends AppCompatActivity {
     private Button login;
     ProgressBar progressBar;
     private FirebaseAuth mAuth;
+
+    public static final String mypreference = "mypref";
+    public static final String Name = "loginKey";
+    SharedPreferences sharedpreferences;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +50,9 @@ public class LoginActivity extends AppCompatActivity {
         goSignUp = findViewById(R.id.gotoSignUp);
         forgotPassword = findViewById(R.id.forgotPassword);
         mAuth = FirebaseAuth.getInstance();
+
+        sharedpreferences = getSharedPreferences(mypreference,
+                Context.MODE_PRIVATE);
 
         //for login button
         login.setOnClickListener(new View.OnClickListener() {
@@ -102,6 +113,12 @@ public class LoginActivity extends AppCompatActivity {
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     progressBar.setVisibility(View.GONE);
                     if (task.isSuccessful()) {
+
+                        SharedPreferences.Editor editor = sharedpreferences.edit();
+
+                        editor.putBoolean(Name, true);
+                        editor.commit();
+
                         Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent);

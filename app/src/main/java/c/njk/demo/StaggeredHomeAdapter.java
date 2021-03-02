@@ -29,11 +29,16 @@ public class StaggeredHomeAdapter extends RecyclerView.Adapter<StaggeredHomeAdap
     private ArrayList<Integer> hImage = new ArrayList<>();
     private Context context;
     private Class fragmentClass;
+    HomeAdapterEvents mHomeAdapterEvents;
 
     public StaggeredHomeAdapter( Context context,ArrayList<String> hName, ArrayList<Integer> hImage) {
         this.hName = hName;
         this.hImage = hImage;
         this.context = context;
+    }
+
+    public void setHomeClickEvents(HomeAdapterEvents homeAdapterEvents){
+        mHomeAdapterEvents = homeAdapterEvents;
     }
 
     @NonNull
@@ -59,8 +64,7 @@ public class StaggeredHomeAdapter extends RecyclerView.Adapter<StaggeredHomeAdap
 
                  AppCompatActivity activity = (AppCompatActivity) view.getContext();
                  if(position == 0) {
-                     Fragment healthFrag = new AboutHealthFragment();
-                     activity.getSupportFragmentManager().beginTransaction().setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out).replace(R.id.mainLayout, healthFrag).addToBackStack(null).commit();
+                     mHomeAdapterEvents.onCardClicked();
                  }
                  }
              });
@@ -86,7 +90,8 @@ public class StaggeredHomeAdapter extends RecyclerView.Adapter<StaggeredHomeAdap
 
     }
 
-//    public interface HomeAdapterEvents{
-//        void onCardClicked(StaggeredHomeAdapter staggeredHomeAdapter);
-//    }
+    public interface HomeAdapterEvents{
+        void onCardClicked();
+    }
+
 }
