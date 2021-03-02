@@ -80,7 +80,7 @@ public class HomeActivity extends AppCompatActivity {
 
         DatabaseReference healthData = database.getReference("healthData");
 
-//        healthData.child(userId).setValue(health);
+        healthData.child(userId).setValue(health);
 
         healthData.child(userId).addValueEventListener(new ValueEventListener() {
             @Override
