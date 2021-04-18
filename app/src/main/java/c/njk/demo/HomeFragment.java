@@ -57,8 +57,13 @@ public class HomeFragment extends Fragment implements StaggeredHomeAdapter.HomeA
 
 
         //initializing vectors
-        hImage.add(R.drawable.ic_health_);
+        hImage.add(R.drawable.ic_savereport);
         hName.add("Save Report");
+
+        hImage.add(R.drawable.ic_health_);
+        hName.add("Health Advice");
+
+
 
 //        hImage.add(R.drawable.heart_rate);
 //        hName.add("Heart rate");
@@ -194,6 +199,6 @@ public class HomeFragment extends Fragment implements StaggeredHomeAdapter.HomeA
 
         stores.child(userId).push().setValue(health);
 
-        Toast.makeText(requireContext(), "Report Saved SuccessFully", Toast.LENGTH_SHORT).show();
+        Toast.makeText(requireContext(), "Report Saved Successfully", Toast.LENGTH_SHORT).show();
     }
 }
