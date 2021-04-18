@@ -16,13 +16,27 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 public class ProfileFragment extends Fragment {
 
     private TextView uName, uMail;
     private EditText uGender, uHeight, uWeight, uBirthday;
     private Button bCancel, bSave;
     private ImageView editImg;
-
+    FirebaseFirestore fStore;
+    FirebaseUser user;
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Nullable
     @Override
@@ -39,6 +53,30 @@ public class ProfileFragment extends Fragment {
         bCancel = view.findViewById(R.id.cancelButton);
         bSave = view.findViewById(R.id.saveButton);
         editImg = view.findViewById(R.id.editInfoButton);
+
+        fStore = FirebaseFirestore.getInstance();
+
+        Task<QuerySnapshot> queryDocumentSnapshots = fStore.collection("users").get();
+
+        queryDocumentSnapshots.addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+
+                List<DocumentSnapshot> myListOfDocuments = task.getResult().getDocuments();
+
+                for (int i = 0; i< myListOfDocuments.size(); i++){
+                    if ((myListOfDocuments.get(i).getString("fEmail").equals(user.getEmail()))){
+                        uName.setText(myListOfDocuments.get(i).getString("fName"));
+                        uGender.setText(myListOfDocuments.get(i).getString("fGender"));
+                        uHeight.setText(myListOfDocuments.get(i).getString("fHeight"));
+                        uWeight.setText(myListOfDocuments.get(i).getString("fBirthDay"));
+                    }
+                }
+            }
+        });
+        user = FirebaseAuth.getInstance().getCurrentUser();
+
+        uMail.setText(user.getEmail());
 
         //disabling editing
         uGender.setFocusable(false);
@@ -132,6 +170,18 @@ public class ProfileFragment extends Fragment {
                 //hiding buttons
                 bCancel.setVisibility(view.GONE);
                 bSave.setVisibility(view.GONE);
+
+
+                DocumentReference documentReference =FirebaseFirestore.getInstance().collection("users").document(user.getUid());
+                Map<String, Object> user = new HashMap<>();
+                user.put("fEmail", uMail.getText().toString());
+                user.put("fName", uName.getText().toString());
+                user.put("fGender", uGender.getText().toString());
+                user.put("fHeight", uHeight.getText().toString());
+                user.put("fBirthDay", uBirthday.getText().toString());
+
+                documentReference.set(user);
+
             }
         });
 

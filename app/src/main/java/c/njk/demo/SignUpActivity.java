@@ -20,6 +20,11 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class SignUpActivity extends AppCompatActivity {
 
@@ -117,6 +122,18 @@ public class SignUpActivity extends AppCompatActivity {
             mAuth.createUserWithEmailAndPassword(inputemail, inputpassword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
+
+
+                    DocumentReference documentReference = FirebaseFirestore.getInstance().collection("users").document(mAuth.getCurrentUser().getUid());
+                    Map<String, Object> user = new HashMap<>();
+                    user.put("fEmail", email.getText().toString());
+                    user.put("fName", name.getText().toString());
+                    user.put("fGender", "30");
+                    user.put("fHeight", "5.6");
+                    user.put("fBirthDay", "20");
+
+                    documentReference.set(user);
+
                     progressBar.setVisibility(View.GONE);
                     if (task.isSuccessful()) {
                         onBackPressed();

@@ -128,7 +128,10 @@ public class HomeFragment extends Fragment implements StaggeredHomeAdapter.HomeA
                     steps = snapshot.getValue(Health.class).getSteps();
                     temperature = snapshot.getValue(Health.class).getTemperature();
                     heartBeat = snapshot.getValue(Health.class).getHeartBeat();
-
+                    tImage = new ArrayList();
+                    tName = new ArrayList();
+                    tValue = new ArrayList();
+                    temperatureAdapter.clear();
                     setData();
 
                 }
