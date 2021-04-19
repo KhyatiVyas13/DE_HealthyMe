@@ -65,6 +65,9 @@ public class StaggeredHomeAdapter extends RecyclerView.Adapter<StaggeredHomeAdap
                  AppCompatActivity activity = (AppCompatActivity) view.getContext();
                  if(position == 0) {
                      mHomeAdapterEvents.onCardClicked();
+                 }if(position == 1) {
+                     Fragment healthFrag = new AboutHealthFragment();
+                     activity.getSupportFragmentManager().beginTransaction().setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out).replace(R.id.mainLayout, healthFrag).addToBackStack(null).commit();
                  }
                  }
              });

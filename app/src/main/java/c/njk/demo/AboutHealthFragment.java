@@ -22,7 +22,7 @@ public class AboutHealthFragment extends Fragment {
 
     private TextView healthTitle;
     private ArrayList<adviceModel> healthAdvice;
-    private Button saveBtn;
+    //private Button saveBtn;
 
     public AboutHealthFragment() {
         // Required empty public constructor
@@ -42,7 +42,7 @@ public class AboutHealthFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_about_health, container, false);
         healthTitle = view.findViewById(R.id.healthTitle);
-        saveBtn = view.findViewById(R.id.saveReportButton);
+        //saveBtn = view.findViewById(R.id.saveReportButton);
         RecyclerView recyclerView = view.findViewById(R.id.healthRecyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         healthAdvice = new ArrayList<>();
@@ -70,12 +70,12 @@ public class AboutHealthFragment extends Fragment {
         Typeface kohoFont = Typeface.createFromAsset(getActivity().getAssets(),"fonts/KoHo-Medium.ttf");
         healthTitle.setTypeface(kohoFont);
 
-        saveBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getContext(), "Report saved!", Toast.LENGTH_SHORT).show();
-            }
-        });
+//        saveBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Toast.makeText(getContext(), "Report saved!", Toast.LENGTH_SHORT).show();
+//            }
+//        });
 
         // Inflate the layout for this fragment
         return view;
