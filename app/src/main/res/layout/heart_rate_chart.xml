@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:backgroundTint="#97B5C3"
+    android:backgroundTint="#9ECFE6"
     app:cardCornerRadius="30sp"
     android:elevation="3dp"
     app:cardUseCompatPadding="true">
@@ -18,6 +18,15 @@
             android:layout_width="match_parent"
             android:layout_height="220sp"
             android:layout_margin="10sp"/>
+
+<!--        <TextView-->
+<!--            android:id="@+id/tvContent"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_below="@id/heartLineChart"-->
+<!--            android:layout_marginStart="20sp"-->
+<!--            android:textColor="@color/colorPrimary"-->
+<!--            android:text="demo"/>-->
 
     </RelativeLayout>
 

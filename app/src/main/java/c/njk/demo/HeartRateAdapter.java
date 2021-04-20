@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
+import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 
 import java.util.ArrayList;
@@ -62,11 +63,29 @@ public class HeartRateAdapter extends RecyclerView.Adapter<HeartRateAdapter.view
         this.heartValue = heartValue;
     }
 
+    public ArrayList<Entry> heartValue(){
+        ArrayList<Entry> val = new ArrayList<Entry>();
+        val.add(new Entry(0,80));
+        val.add(new Entry(1,70));
+        val.add(new Entry(2,67));
+        val.add(new Entry(3,78));
+        val.add(new Entry(4,80));
+        val.add(new Entry(5,80));
+        val.add(new Entry(6,85));
+        val.add(new Entry(7,90));
+        val.add(new Entry(8,95));
+        val.add(new Entry(9,100));
+        return val;
+    }
     @NonNull
     @Override
     public viewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.heart_rate_chart,parent,false);
 
+//        LineDataSet lineDataSet = new LineDataSet(heartValue(),"Overall Heart Rate");
+//        ArrayList<ILineDataSet> dataSets = new ArrayList<>() ;
+//        dataSets.add(lineDataSet);
+        LineData data = new LineData(dataSets);
         lineChart = view.findViewById(R.id.heartLineChart);
         lineChart.setData(data);
         lineChart.invalidate();

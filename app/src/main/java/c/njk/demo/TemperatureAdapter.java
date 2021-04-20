@@ -63,6 +63,7 @@ public class TemperatureAdapter extends RecyclerView.Adapter<TemperatureAdapter.
                 if(position == 2) {
                     Fragment heartFragment = new HeartRateFragment();
                     activity.getSupportFragmentManager().beginTransaction().setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out).replace(R.id.mainLayout, heartFragment).addToBackStack(null).commit();
+
                 }
             }
         });
