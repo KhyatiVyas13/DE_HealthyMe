@@ -99,7 +99,7 @@ public class HeartRateAdapter extends RecyclerView.Adapter<HeartRateAdapter.view
 
     @Override
     public int getItemCount() {
-        return heartValue.size();
+        return 1;
     }
 
     public class viewHolder extends RecyclerView.ViewHolder {
