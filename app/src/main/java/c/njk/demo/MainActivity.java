@@ -46,16 +46,20 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void run() {
 
-            Intent intent;
+//            Intent intent;
 
-            if (sharedpreferences.getString(Name,"").equals("")){
-                intent = new Intent(MainActivity.this , LoginActivity.class);
+            if (!sharedpreferences.getBoolean(Name,false)){
+                Intent intent = new Intent(MainActivity.this , LoginActivity.class);
+                startActivity(intent);
+                finish();
             }else{
-                intent = new Intent(MainActivity.this , HomeActivity.class);
+                Intent intent = new Intent(MainActivity.this , HomeActivity.class);
+                startActivity(intent);
+                finish();
             }
 
-            startActivity(intent);
-            finish();
+//            startActivity(intent);
+//            finish();
 
             }
         } , SPLASH_SCREEN);
