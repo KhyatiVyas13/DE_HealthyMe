@@ -76,6 +76,8 @@ public class HomeActivity extends AppCompatActivity {
 
         //Example you need save a Store in
 
+        //HealthData
+
         FirebaseDatabase database = FirebaseDatabase.getInstance();
 
         DatabaseReference healthData = database.getReference("healthData");

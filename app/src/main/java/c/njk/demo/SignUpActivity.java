@@ -124,7 +124,10 @@ public class SignUpActivity extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
 
-                    DocumentReference documentReference =FirebaseFirestore.getInstance().collection("users").document(mAuth.getCurrentUser().getUid());
+
+                    /// Store Data into firestore
+                    DocumentReference documentReference = FirebaseFirestore.getInstance().collection("users").document(mAuth.getCurrentUser().getUid());
+
                     Map<String, Object> user = new HashMap<>();
                     user.put("fEmail", email.getText().toString());
                     user.put("fName", name.getText().toString());
