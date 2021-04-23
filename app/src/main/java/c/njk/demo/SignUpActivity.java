@@ -34,6 +34,7 @@ public class SignUpActivity extends AppCompatActivity {
     private ImageView back;
     ProgressBar progressBar;
     private FirebaseAuth mAuth;
+    FirebaseFirestore fStore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -116,21 +117,20 @@ public class SignUpActivity extends AppCompatActivity {
             password.requestFocus();
             return;
         }
-
         else {
             progressBar.setVisibility(View.VISIBLE);
+
             mAuth.createUserWithEmailAndPassword(inputemail, inputpassword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
 
-
-                    DocumentReference documentReference = FirebaseFirestore.getInstance().collection("users").document(mAuth.getCurrentUser().getUid());
+                    DocumentReference documentReference =FirebaseFirestore.getInstance().collection("users").document(mAuth.getCurrentUser().getUid());
                     Map<String, Object> user = new HashMap<>();
                     user.put("fEmail", email.getText().toString());
                     user.put("fName", name.getText().toString());
-                    user.put("fGender", "30");
+                    user.put("fGender", "Female");
                     user.put("fHeight", "5.6");
-                    user.put("fBirthDay", "20");
+                    user.put("fBirthDay", "10");
 
                     documentReference.set(user);
 
