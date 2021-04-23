@@ -2,6 +2,7 @@ package c.njk.demo;
 
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,17 +18,21 @@ import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Consumer;
 
 public class ProfileFragment extends Fragment {
 
@@ -56,6 +61,8 @@ public class ProfileFragment extends Fragment {
 
         fStore = FirebaseFirestore.getInstance();
 
+        user = FirebaseAuth.getInstance().getCurrentUser();
+
         Task<QuerySnapshot> queryDocumentSnapshots = fStore.collection("users").get();
 
         queryDocumentSnapshots.addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -74,7 +81,6 @@ public class ProfileFragment extends Fragment {
                 }
             }
         });
-        user = FirebaseAuth.getInstance().getCurrentUser();
 
         uMail.setText(user.getEmail());
 
@@ -181,7 +187,6 @@ public class ProfileFragment extends Fragment {
                 user.put("fBirthDay", uBirthday.getText().toString());
 
                 documentReference.set(user);
-
             }
         });
 
