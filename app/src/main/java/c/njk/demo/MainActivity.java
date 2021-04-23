@@ -46,9 +46,18 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void run() {
 
-            Intent intent = new Intent(MainActivity.this , LoginActivity.class);
-            startActivity(intent);
-            finish();
+            if (!sharedpreferences.getBoolean(Name, false)){
+                Intent intent = new Intent(MainActivity.this , LoginActivity.class);
+                startActivity(intent);
+                finish();
+
+            }else{
+                Intent intent = new Intent(MainActivity.this , HomeActivity.class);
+                startActivity(intent);
+                finish();
+
+            }
+
 
 
             }
