@@ -233,12 +233,12 @@ public class HomeActivity extends AppCompatActivity {
                                                                      break;
                                                                  }
                                                                  case 3: {
-                                                                     fragmentClass = SavedReportsFragment.class;
+                                                                     fragmentClass = AboutUsFragment.class;
                                                                      break;
                                                                  }
 
                                                                  case 4:{
-                                                                     fragmentClass = SavedReportsFragment.class;
+                                                                     fragmentClass = AboutUsFragment.class;
                                                                      break;
                                                                  }
                                                                  //case 5 is for logout

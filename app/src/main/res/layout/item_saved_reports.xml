@@ -4,10 +4,10 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardCornerRadius="10dp"
+    app:cardCornerRadius="10sp"
     android:clipToPadding="true"
     android:elevation="2dp"
-    android:background="@color/White"
+    android:background="#FFD5CD"
     android:layout_marginTop="10dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout

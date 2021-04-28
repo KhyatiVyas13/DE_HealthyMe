@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AboutUsFragment"
+    android:background="#121212">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/aboutPara"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#EDECEC"
+            android:text="Now a days health is one of the global challenges for humanity. \nOur software monitors and predicts the health of human beings on regular basis. This software collects early reports of any symptoms that users may have. It is often useful to collect health-related information so that you are aware of any health issues you have. \nOur goal is to make everyone healthy and eliminate any constraints that prevent you from living a healthy lifestyle."
+            android:textAlignment="center"
+            android:textSize="21sp"
+            android:fontFamily="@font/roboto_thin"
+            android:layout_marginTop="20sp"
+            android:padding="10sp"/>
+
+        <TextView
+            android:id="@+id/copyWrite"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#EAE9E9"
+            android:text="&#169; 2021 Team:280588 All rights Reserved"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            android:fontFamily="@font/roboto_thin"
+            android:layout_marginTop="660sp"
+            android:padding="10sp"/>
+
+    </FrameLayout>
+
+    </FrameLayout>
